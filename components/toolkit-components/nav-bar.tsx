@@ -6,15 +6,15 @@ export default async function NavBar() {
   const user = await currentUser()
 
   return (
-    <nav className="flex justify-between items-center p-2">
+    <nav className="flex justify-end items-center p-2">
       {/* puesdo logo **/}
-      {user ? (
+      {/* {user ? (
         <div className="font-bold">
           {user?.firstName + ' ' + user?.lastName || ''}
         </div>
       ) : (
         <div />
-      )}
+      )} */}
 
       <div className="flex gap-1">
         <GithubButton />
