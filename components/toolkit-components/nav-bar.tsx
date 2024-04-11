@@ -1,11 +1,26 @@
+import { currentUser, UserButton } from '@clerk/nextjs'
 import { DarkModeToggle } from './dark-mode-toggle'
 import GithubButton from './github-button'
 
-export default function NavBar() {
+export default async function NavBar() {
+  const user = await currentUser()
+
   return (
-    <nav className="flex justify-end p-2 gap-2">
-      <GithubButton />
-      <DarkModeToggle />
+    <nav className="flex justify-between items-center p-2">
+      {/* puesdo logo **/}
+      {user ? (
+        <div className="font-bold">
+          {user?.firstName + ' ' + user?.lastName || ''}
+        </div>
+      ) : (
+        <div />
+      )}
+
+      <div className="flex gap-1">
+        <GithubButton />
+        <DarkModeToggle />
+        <UserButton afterSignOutUrl="/" />
+      </div>
     </nav>
   )
 }
