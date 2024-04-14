@@ -1,17 +1,19 @@
 import { type ReactNode } from 'react'
 
-type LayoutProps = {
+type OrganizationLayoutLayoutProps = {
   children: ReactNode
 }
 
-export default function OrganizationLayout({ children }: LayoutProps) {
+export default function OrganizationLayout({
+  children,
+}: OrganizationLayoutLayoutProps) {
   return (
-    <main className="pt-20 md:pt-24 px-4 max-w-6xl 2xl:max-w-screen-xl mx-auto">
+    <main className="pt-20 min-h-screen md:pt-24 px-4">
       <div className="flex gap-x-7">
         {/* Sidebar **/}
-        <div className="w-64 shrink-0 hidden md:block"></div>
+        <div className="w-64 shrink-0 hidden md:block">X</div>
+        {children}
       </div>
-      {children}
     </main>
   )
 }

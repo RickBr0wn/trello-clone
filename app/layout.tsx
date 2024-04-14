@@ -25,10 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn(
-          'min-h-screen bg-background font-sans antialiased',
-          inter.className
-        )}
+        className={cn('min-h-screen font-sans antialiased', inter.className)}
       >
         <ThemeProvider
           attribute="class"
@@ -38,7 +35,7 @@ export default function RootLayout({
         >
           <ClerkProvider>
             <TooltipProvider>
-              <ScreenSizeIndicator />
+              {/* <ScreenSizeIndicator /> */}
               <NavBar />
               <div>{children}</div>
               <Toaster />

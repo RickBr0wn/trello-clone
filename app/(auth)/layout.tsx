@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 type AuthenticationComponentsLayoutProps = {
   children: ReactNode
 }
-export default function Layout({
+export default function AuthLayout({
   children,
 }: AuthenticationComponentsLayoutProps) {
   return (

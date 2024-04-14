@@ -5,7 +5,7 @@ type MarketingLayoutProps = {
 }
 
 export default function MarketingLayout({ children }: MarketingLayoutProps) {
-  return <>{children}</>
+  return <div className="bg-red-100">{children}</div>
 }
 
 // Path: app/(marketing)/layout.tsx
