@@ -49,6 +49,14 @@
   }
 }
 
+/* .cl-internal-1cyy55d {
+  background-color: gray;
+}
+
+.cl-internal-1cyy55d:hover {
+  background-color: rgb(94, 94, 94);
+} */
+
 @layer base {
   * {
     @apply border-border;
