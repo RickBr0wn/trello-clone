@@ -4,12 +4,14 @@ import GithubButton from './github-button'
 import HomeButton from '../home-button'
 import { Button } from '../ui/button'
 import { PlusIcon } from '@radix-ui/react-icons'
+import MobileSidebar from '../mobile-sidebar'
 
 export default async function NavBar() {
   const user = await currentUser()
 
   return (
     <nav className="flex items-center p-2">
+      <MobileSidebar />
       <div className="flex gap-1 w-full justify-between">
         {user && (
           <div className="flex items-center">

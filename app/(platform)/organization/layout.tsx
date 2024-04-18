@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react'
+import Sidebar from '~/components/sidebar'
 
 type OrganizationLayoutLayoutProps = {
   children: ReactNode
@@ -10,8 +11,9 @@ export default function OrganizationLayout({
   return (
     <main className="pt-20 min-h-screen md:pt-24 px-4">
       <div className="flex gap-x-7">
-        {/* Sidebar **/}
-        <div className="w-64 shrink-0 hidden md:block">X</div>
+        <div className="w-64 shrink-0 hidden md:block">
+          <Sidebar />
+        </div>
         {children}
       </div>
     </main>
