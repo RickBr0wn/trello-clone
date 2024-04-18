@@ -29,19 +29,12 @@ export default function RootLayout({
       <body
         className={cn('min-h-screen font-sans antialiased', inter.className)}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Providers>
-            {/* <ScreenSizeIndicator /> */}
-            <NavBar />
-            <div>{children}</div>
-            <Toaster />
-          </Providers>
-        </ThemeProvider>
+        <Providers>
+          {/* <ScreenSizeIndicator /> */}
+          <NavBar />
+          <div>{children}</div>
+          <Toaster />
+        </Providers>
       </body>
     </html>
   )

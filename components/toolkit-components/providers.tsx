@@ -5,6 +5,7 @@ import { type ReactNode } from 'react'
 import { useTheme } from 'next-themes'
 import ClerkProvider from './clerk-provider'
 import { TooltipProvider } from '../ui/tooltip'
+import { ThemeProvider } from './theme-provider'
 
 type ProvidersProps = {
   children: ReactNode
@@ -14,9 +15,16 @@ export default function Providers({ children }: ProvidersProps) {
   const { resolvedTheme } = useTheme()
 
   return (
-    <ClerkProvider theme={resolvedTheme as string}>
-      <TooltipProvider>{children}</TooltipProvider>
-    </ClerkProvider>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <ClerkProvider theme={resolvedTheme as string}>
+        <TooltipProvider>{children}</TooltipProvider>
+      </ClerkProvider>
+    </ThemeProvider>
   )
 }
 
