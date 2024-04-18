@@ -7,8 +7,10 @@ import ScreenSizeIndicator from '~/components/toolkit-components/screen-size-ind
 import NavBar from '~/components/toolkit-components/nav-bar'
 import { Toaster } from '~/components/ui/toaster'
 import { TooltipProvider } from '~/components/ui/tooltip'
-import { ClerkProvider } from '@clerk/nextjs'
+
 import { siteConfig } from '~/config/site'
+import ClerkProvider from '~/components/toolkit-components/clerk-provider'
+import Providers from '~/components/toolkit-components/providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -33,14 +35,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ClerkProvider>
-            <TooltipProvider>
-              {/* <ScreenSizeIndicator /> */}
-              <NavBar />
-              <div>{children}</div>
-              <Toaster />
-            </TooltipProvider>
-          </ClerkProvider>
+          <Providers>
+            {/* <ScreenSizeIndicator /> */}
+            <NavBar />
+            <div>{children}</div>
+            <Toaster />
+          </Providers>
         </ThemeProvider>
       </body>
     </html>

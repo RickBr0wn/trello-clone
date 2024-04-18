@@ -16,6 +16,7 @@ import {
 import { usePathname, useRouter } from 'next/navigation'
 import { ReactNode } from 'react'
 import { Button } from './ui/button'
+import { Skeleton } from './ui/skeleton'
 
 export type Organization = {
   id: string
@@ -110,6 +111,17 @@ export default function NavItem({
         ))}
       </AccordionContent>
     </AccordionItem>
+  )
+}
+
+NavItem.Skeleton = function SkeletonNavItem() {
+  return (
+    <div className="flex items-center gap-x-2">
+      <div className="w-10 h-10 relative shrink-0">
+        <Skeleton className="h-full w-full absolute" />
+      </div>
+      <Skeleton className="h-10 w-full" />
+    </div>
   )
 }
 
