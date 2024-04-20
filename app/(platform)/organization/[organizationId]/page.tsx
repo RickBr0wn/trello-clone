@@ -1,9 +1,20 @@
-import { auth } from '@clerk/nextjs'
+import { db } from '~/lib/db'
+import Board from './_components/board'
+import Form from './_components/form'
 
-export default function OrganizationIdPage() {
-  const { userId, orgId } = auth()
+export default async function OrganizationIdPage() {
+  const boards = await db.board.findMany()
 
-  return <h1>Org#: {orgId}</h1>
+  return (
+    <div className="flex flex-col space-y-4">
+      <Form />
+      <div className="space-y-2">
+        {boards.map(board => (
+          <Board key={board.id} id={board.id} title={board.title} />
+        ))}
+      </div>
+    </div>
+  )
 }
 
 // Path: app/(platform)/organization/[organizationId]/page.tsx
