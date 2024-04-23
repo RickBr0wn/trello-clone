@@ -10,13 +10,14 @@ export type State = {
     title?: Array<string>
   }
   message?: string | null
+  title?: Array<string> | undefined
 }
 
 const CreateBoard = z.object({
   title: z.string().min(3, { message: 'Minimum of 3 characters required.' }),
 })
 
-export async function create(prevState: State, formData: FormData) {
+export async function createBoard(prevState: State, formData: FormData) {
   const validatedFields = CreateBoard.safeParse({
     title: formData.get('title'),
   })
@@ -46,7 +47,7 @@ export async function create(prevState: State, formData: FormData) {
   redirect('/organization/org_2f63lFP45qJuJ7JtXSkNA8MgAM4')
 }
 
-// Path: actions/create-board.ts
-// Created at: 22:09:22 - 19/04/2024
+// Path: actions/create-board/create-board.ts
+// Created at: 19:24:17 - 22/04/2024
 // Language: Typescript
 // Framework: React/Next.js
