@@ -31,6 +31,7 @@ export default function FormSubmit({
       size="sm"
       disabled={pending || disabled}
       type="submit"
+      className={className}
     >
       {children}
     </Button>
