@@ -40,6 +40,10 @@ export default function FormPopover({
     },
     onError: error => {
       console.log(error)
+      toast({
+        title: 'Error',
+        description: 'Board did not create.',
+      })
     },
   })
 
