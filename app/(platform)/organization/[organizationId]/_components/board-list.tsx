@@ -1,6 +1,6 @@
 import { PersonIcon, QuestionMarkCircledIcon } from '@radix-ui/react-icons'
 import Hint from './hint'
-import FormPopover from './form-popover'
+import FormPopover from '~/components/form/form-popover'
 
 export default function BoardList() {
   return (

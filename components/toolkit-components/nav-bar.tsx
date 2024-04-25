@@ -5,6 +5,7 @@ import HomeButton from '../home-button'
 import { Button } from '../ui/button'
 import { PlusIcon } from '@radix-ui/react-icons'
 import MobileSidebar from '../mobile-sidebar'
+import FormPopover from '../form/form-popover'
 
 export default async function NavBar() {
   const user = await currentUser()
@@ -15,12 +16,16 @@ export default async function NavBar() {
       <div className="flex gap-1 w-full justify-between">
         {user && (
           <div className="flex items-center">
-            <Button variant="outline" className="block md:hidden">
-              <PlusIcon />
-            </Button>
-            <Button variant="outline" className="hidden md:block uppercase">
-              Create
-            </Button>
+            <FormPopover>
+              <Button variant="outline" className="block md:hidden">
+                <PlusIcon />
+              </Button>
+            </FormPopover>
+            <FormPopover align="start" side="bottom" sideOffset={18}>
+              <Button variant="outline" className="hidden md:block uppercase">
+                Create
+              </Button>
+            </FormPopover>
           </div>
         )}
         <div className="flex items-center">

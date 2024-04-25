@@ -1,7 +1,7 @@
 'use client'
 
 import { Cross1Icon } from '@radix-ui/react-icons'
-import { ReactNode } from 'react'
+import { type ElementRef, type ReactNode, useRef } from 'react'
 import { createBoard } from '~/actions/create-board'
 import { FormInput } from '~/components/form/form-input'
 import FormSubmit from '~/components/form/form-submit'
@@ -14,6 +14,8 @@ import {
 } from '~/components/ui/popover'
 import { useToast } from '~/components/ui/use-toast'
 import { useAction } from '~/hooks/use-action'
+import FormPicker from './form-picker'
+import { useRouter } from 'next/navigation'
 
 type FormPopverProps = {
   children: ReactNode
@@ -29,26 +31,33 @@ export default function FormPopover({
   sideOffset,
 }: FormPopverProps) {
   const { toast } = useToast()
+  const router = useRouter()
+  const closeRef = useRef<ElementRef<'button'>>(null)
 
   const { execute, fieldErrors } = useAction(createBoard, {
     onSuccess: data => {
-      console.log(data)
       toast({
         title: 'Success',
         description: 'Board created.',
+        variant: 'outline',
       })
+      closeRef.current?.click()
+      router.push(`/board/${data.id}`)
     },
     onError: error => {
-      console.log(error)
       toast({
         title: 'Error',
-        description: 'Board did not create.',
+        description: `Board did not create. Error: ${error}`,
+        variant: 'outline',
       })
     },
   })
 
   const onSubmitAction = (formData: FormData) => {
-    execute({ title: formData.get('title') as string })
+    const title = formData.get('title') as string
+    const image = formData.get('image') as string
+
+    execute({ title, image })
   }
 
   return (
@@ -63,7 +72,7 @@ export default function FormPopover({
         <div className="text-sm font-medium text-center text-neutral-300">
           Create board
         </div>
-        <PopoverClose asChild>
+        <PopoverClose asChild ref={closeRef}>
           <Button
             variant="ghost"
             className="h-auto w-auto p-2 absolute top-2 right-2"
@@ -73,6 +82,7 @@ export default function FormPopover({
         </PopoverClose>
         <form className="space-y-2" action={onSubmitAction}>
           <div>
+            <FormPicker id="image" errors={fieldErrors} />
             <FormInput
               id="title"
               label="Board Title"
