@@ -1,8 +1,16 @@
 import { type ReactNode } from 'react'
 import OrganizationControl from './_components/organization-control'
+import { startCase } from 'lodash'
+import { auth } from '@clerk/nextjs'
 
 type OrganizationIdLayoutProps = {
   children: ReactNode
+}
+
+export async function generateMetadata() {
+  const { orgSlug } = auth()
+
+  return { title: startCase(orgSlug || 'organization') }
 }
 
 export default function Layout({ children }: OrganizationIdLayoutProps) {

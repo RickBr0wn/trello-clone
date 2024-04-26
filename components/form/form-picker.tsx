@@ -30,8 +30,6 @@ export default function FormPicker({ id, errors }: FormPickerProps) {
           count: 9,
         })
 
-        console.log({ result })
-
         if (result && result.response) {
           setImages(result.response as Array<Record<string, any>>)
         } else {
@@ -46,6 +44,8 @@ export default function FormPicker({ id, errors }: FormPickerProps) {
     }
     fetchImages()
   }, [])
+
+  console.log({ images })
 
   if (isLoading) {
     return (
@@ -79,7 +79,7 @@ export default function FormPicker({ id, errors }: FormPickerProps) {
               checked={selectedImageId === image.id}
               disabled={pending}
               onChange={() => {}}
-              value={`${image.id}|${image.urls.thumbs}|${image.urls.full}|${image.links.html}|${image.user.name}`}
+              value={`${image.id}|${image.urls.thumb}|${image.urls.full}|${image.links.html}|${image.user.name}`}
             />
             <Image
               fill
