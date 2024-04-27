@@ -27,12 +27,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn('min-h-screen font-sans antialiased', inter.className)}
+        className={cn(
+          'min-h-screen h-screen font-sans antialiased',
+          inter.className
+        )}
       >
         <Providers>
           {/* <ScreenSizeIndicator /> */}
           <NavBar />
-          <div>{children}</div>
+          <div className="h-full">{children}</div>
           <Toaster />
         </Providers>
       </body>

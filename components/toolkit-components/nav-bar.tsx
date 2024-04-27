@@ -11,7 +11,7 @@ export default async function NavBar() {
   const user = await currentUser()
 
   return (
-    <nav className="flex items-center p-2">
+    <nav className="flex items-center p-2 fixed w-full z-10 bg-background">
       <MobileSidebar />
       <div className="flex gap-1 w-full justify-between">
         {user && (
