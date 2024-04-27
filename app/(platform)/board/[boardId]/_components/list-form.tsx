@@ -75,7 +75,12 @@ export default function ListForm() {
             className="text-sm px-2 py-1 h-7 font-medium border-transparent hover:border-input text-background focus:border-input transition"
             placeholder="Enter list title.."
           />
-          <input hidden value={params.boardId} name="boardId" />
+          <input
+            hidden
+            value={params.boardId}
+            name="boardId"
+            onChange={() => {}}
+          />
           <div className="flex items-center gap-x-1">
             <FormSubmit>Add List</FormSubmit>
             <Button
