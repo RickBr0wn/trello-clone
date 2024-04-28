@@ -9,9 +9,12 @@ import { useToast } from '~/components/ui/use-toast'
 import { useAction } from '~/hooks/use-action'
 import ListOptions from './list-options'
 
-type ListHeaderProps = { data: List }
+type ListHeaderProps = {
+  data: List
+  onAddCard: () => void
+}
 
-export default function ListHeader({ data }: ListHeaderProps) {
+export default function ListHeader({ data, onAddCard }: ListHeaderProps) {
   const [title, setTitle] = useState<string>(data.title)
   const [isEditing, setIsEditing] = useState<boolean>(false)
 
@@ -93,7 +96,7 @@ export default function ListHeader({ data }: ListHeaderProps) {
           {title}
         </div>
       )}
-      <ListOptions data={data} onAddCard={() => {}} />
+      <ListOptions data={data} onAddCard={onAddCard} />
     </div>
   )
 }
